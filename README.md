@@ -117,27 +117,24 @@ class Algorithm {
         public Link deleteKey(int key) {
 
            Link current = first;
+
            while (current.data != key) {
                current = current.next;
                if (current == null)
                    return null;
            }
 
-           Link temp = current;
-
-           if (current.next == null) {
+           if (current == first)
                first = current.next;
-               last = current.previous;
-           }
-           else if (current.previous == null) {
+           else
                current.previous.next = current.next;
+
+           if (current == last)
                last = current.previous;
-           }
-           else {
-               current.previous.next = current.next;
+           else
                current.next.previous = current.previous;
-           }
-           return temp;
+
+           return current;
         }
     }
 
@@ -150,6 +147,16 @@ class Algorithm {
        doublyLinkList.insertAfter(5,15);
        doublyLinkList.insertAfter(10,3);
        doublyLinkList.displayForward();
+       doublyLinkList.displayBackward();
+       doublyLinkList.deleteKey(3);
+       doublyLinkList.displayBackward();
+       doublyLinkList.deleteKey(20);
+       doublyLinkList.displayBackward();
+       doublyLinkList.deleteKey(15);
+       doublyLinkList.displayBackward();
+       doublyLinkList.deleteKey(5);
+       doublyLinkList.displayBackward();
+       doublyLinkList.deleteKey(10);
        doublyLinkList.displayBackward();
 
     }
